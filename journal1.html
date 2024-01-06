@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <title>Glowing Typewriter Text</title>
     <style>
+        /* CSS styles */
         body, html {
             height: 100%;
             margin: 0;
-            background: transparent; /* Make background transparent */
+            background: transparent;
+            color: white; /* Adjust the text color as needed */
             display: flex;
-            justify-content: center; /* Center content horizontally */
-            align-items: center; /* Center content vertically */
-            overflow: hidden; /* Hide overflow */
+            justify-content: center;
+            align-items: center;
+            font-family: 'Courier New', Courier, monospace; /* or any preferred font */
+            overflow: hidden;
         }
 
         .glowing-text {
-            font-size: 24px; /* Adjust as needed */
-            color: white; /* Adjust text color as needed */
+            white-space: pre-wrap; /* respects whitespace in the text content */
+            font-size: 18px; /* Adjust as needed */
             text-shadow: 0 0 10px #FFD700, 
                          0 0 20px #FFA500, 
                          0 0 30px #FF7F50, 
@@ -35,18 +38,29 @@
     </style>
 </head>
 <body>
-    <div id="journaltext" class="glowing-text">Your Glowing Typewriter Text Goes Here</div>
+    <div id="journaltext" class="glowing-text">
+        <!-- Your formatted text goes here -->
+        October 1, 2023<br><br>
+        Kogan,<br><br>
+        You've probably noticed by now that you have assumed the role of the Pandora Apartments property manager. You can call me Anne. We haven't officially met, but know that I care about you and didn't mean for this to happen. I know you must be frightened and confused, I swear there's a good reason for everything, so I'll do my best to explain without overwhelming you:<br><br>
+        Thirty years ago, this building was a mental hospital where the Pandora Research Group carried out an experiment called "PINTV." It's difficult to find much information about PINTV because it was all classified, but it made national news when a tragedy claimed the lives of everyone at the Pandora Institute.<br><br>
+        Although the building was closed down, the tragedies didn't end; people have still been going missing, but now that the building has turned into low-income apartments, the residents being targeted tend to be the sort society overlooks. I'm convinced that the Pandora Group is still operating, the so-called mass suicide was a cover-up, and they know exactly where all of the missing persons are, and are possibly using them for further experiments.<br><br>
+        The truth is I haven't been well lately. I need you to step up and figure out who's being targeted, by whom, and where they’re going. In the meantime, you’ll find everything you need in this office, including food, clothes, and a place to sleep. Take a look through the information I’ve gathered as well. You may see something I've missed.<br><br>
+        -Anne<br><br>
+        P.S. Oliver’s been prowling around outside the office ever since you showed up. I don’t know what you did to draw his attention, but keep a lower profile from now on, the security team can't be trusted.
+    </div>
     <script>
+        // JavaScript for typewriter effect
         document.addEventListener('DOMContentLoaded', function () {
             const element = document.getElementById('journaltext');
-            const fullText = element.textContent;
+            const fullText = element.innerHTML; // use innerHTML to preserve line breaks
             let currentIndex = 0;
 
             function typeWriterEffect() {
                 if (currentIndex < fullText.length) {
-                    element.textContent = fullText.substring(0, currentIndex + 1);
+                    element.innerHTML = fullText.substring(0, currentIndex + 1);
                     currentIndex++;
-                    setTimeout(typeWriterEffect, 75); // Adjust speed as necessary
+                    setTimeout(typeWriterEffect, 50); // Adjust speed as necessary
                 }
             }
 
