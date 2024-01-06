@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Glowing Typewriter Text</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            background: transparent; /* Make background transparent */
+            display: flex;
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
+            overflow: hidden; /* Hide overflow */
+        }
+
+        .glowing-text {
+            font-size: 24px; /* Adjust as needed */
+            color: white; /* Adjust text color as needed */
+            text-shadow: 0 0 10px #FFD700, 
+                         0 0 20px #FFA500, 
+                         0 0 30px #FF7F50, 
+                         0 0 40px #FF4500; 
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #FFA500, 0 0 20px #FFA500, 0 0 30px #FF7F50, 0 0 40px #FF4500;
+            }
+            to {
+                text-shadow: 0 0 20px #FFFF00, 0 0 30px #FFD700, 0 0 40px #FFA500, 0 0 50px #FF8C00;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="journaltext" class="glowing-text">Your Glowing Typewriter Text Goes Here</div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const element = document.getElementById('journaltext');
+            const fullText = element.textContent;
+            let currentIndex = 0;
+
+            function typeWriterEffect() {
+                if (currentIndex < fullText.length) {
+                    element.textContent = fullText.substring(0, currentIndex + 1);
+                    currentIndex++;
+                    setTimeout(typeWriterEffect, 75); // Adjust speed as necessary
+                }
+            }
+
+            typeWriterEffect();
+        });
+    </script>
+</body>
+</html>
